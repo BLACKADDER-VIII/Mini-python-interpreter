@@ -1,0 +1,165 @@
+Script started on 2022-12-07 17:48:23-0600
+]0;dp1200@cse01: ~/CSCE_4430/assn7[01;32mdp1200@cse01[00m:[01;34m~/CSCE_4430/assn7[00m$ javac *.java
+Note: AbstractSyntaxTree.java uses unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+]0;dp1200@cse01: ~/CSCE_4430/assn7[01;32mdp1200@cse01[00m:[01;34m~/CSCE_4430/assn7[00m$ java MicPyInt test1.py
+Source Program
+--------------
+
+# test1.py
+
+# This program tests basic arithmetic and the while loop.
+
+from MicroPythonListClass import MicroPythonList
+
+def mainFunc name = main
+ () -> int :
+  x = int (input ())
+  y = int (input ())
+  q = 0  
+  r = x
+  while r >= y :
+    q = q + 1
+    r = r - y;
+  print (q)
+  print (r)
+  return 0
+Input>>32
+Input>>5
+6
+2
+0
+
+
+
+]0;dp1200@cse01: ~/CSCE_4430/assn7[01;32mdp1200@cse01[00m:[01;34m~/CSCE_4430/assn7[00m$ java MicPyInt test1.py[1P.py2.py
+Source Program
+--------------
+
+from MicroPythonListClass import MicroPythonList
+
+def mainFunc name = main
+ () -> int :
+  myList0 = MicroPythonList ()
+  myList1 = myList0 . cons (7)
+  myList2 = myList1 . cons (5)
+  myList3 = myList2 . cons (3)
+  result = (12 * 3 + 5) + myList3 . tail () . head ()
+  print (result)
+  return 0
+46
+0
+
+
+
+]0;dp1200@cse01: ~/CSCE_4430/assn7[01;32mdp1200@cse01[00m:[01;34m~/CSCE_4430/assn7[00m$ java MicPyInt test2.py[1P.py3.py
+Source Program
+--------------
+
+from MicroPythonListClass import MicroPythonList
+
+def mainFunc name = main
+ () -> int :
+  my_list0 = MicroPythonList ()
+  my_list1 = my_list0 . cons (46)
+  my_list2 = my_list1 . cons (578)
+  my_list3 = my_list2 . cons (405)
+  my_list4 = my_list3 . cons (918)
+  my_list5 = my_list4 . cons (47)
+  my_list6 = my_list5 . cons (198)
+  my_list  = my_list6 . cons (14)
+  print (my_list)
+  target = 405
+  position = 0
+  while not my_list . null () and my_list . head () != target :
+    my_list = my_list . tail ()
+    position = position + 1;
+  if my_list . null () :
+    print (-1);
+  else :
+    print (position);
+  return 0
+[46, 578, 405, 918, 47, 198, 14]
+2
+0
+
+
+
+]0;dp1200@cse01: ~/CSCE_4430/assn7[01;32mdp1200@cse01[00m:[01;34m~/CSCE_4430/assn7[00m$ java MicPyInt test3.py[1P.py4.py
+Source Program
+--------------
+
+from MicroPythonListClass import MicroPythonList
+
+def areaFunc name = area
+ (h : int, x : int, y : int) -> int :
+  z = 2 * (x * y + (x * h) + y * h)
+  return z
+
+def mainFunc name = main
+ () -> int :
+  a = int (input ())
+  b = int (input ())
+  h = int (input ())
+  s = area (h, a, b)
+  print (s)
+  return 0
+Input>>3
+Input>>4
+Input>>5
+94
+0
+
+
+
+]0;dp1200@cse01: ~/CSCE_4430/assn7[01;32mdp1200@cse01[00m:[01;34m~/CSCE_4430/assn7[00m$ java MicPyInt test4.py[1P.py5.py
+Source Program
+--------------
+
+from MicroPythonListClass import MicroPythonList
+
+def factoFunc name = facto
+ (x : int) -> int :
+  if x == 1 :
+    s = 1;
+  else :
+    s = x * facto (x - 1);
+  return s
+
+def mainFunc name = main
+ () -> int :
+  print (facto (int (input ())))
+  return 0
+Input>>6
+720
+0
+
+
+
+]0;dp1200@cse01: ~/CSCE_4430/assn7[01;32mdp1200@cse01[00m:[01;34m~/CSCE_4430/assn7[00m$ java MicPyInt test5.py[1P.py6.py
+Source Program
+--------------
+
+from MicroPythonListClass import MicroPythonList
+
+def cons_my_listFunc name = cons_my_list
+ (r : int, my_list : MicroPythonList) -> MicroPythonList :
+  if r <= 10 :
+    my_list = my_list . cons (r)
+    my_list = cons_my_list (r + 1, my_list);
+  return my_list
+
+def mainFunc name = main
+ () -> int :
+  print (cons_my_list (int (input ()), MicroPythonList ()))
+  return 0
+Input>>5
+[5, 6, 7, 8, 9, 10]
+0
+
+
+
+]0;dp1200@cse01: ~/CSCE_4430/assn7[01;32mdp1200@cse01[00m:[01;34m~/CSCE_4430/assn7[00m$ exit
+exit
+
+Script done on 2022-12-07 17:50:46-0600

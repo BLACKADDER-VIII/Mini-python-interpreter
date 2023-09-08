@@ -1,0 +1,199 @@
+Script started on 2022-10-20 01:10:29-05:00 [TERM="xterm-256color" TTY="/dev/pts/2" COLUMNS="80" LINES="24"]
+brb0164@faculty% javac AbstractSyntaxTree.java
+brb0164@faculty% javac MicroPythonAST.java
+brb0164@faculty% java MicroPythonAST < test1.py
+Source Program
+--------------
+
+# test1.py
+
+# This program tests basic arithmetic and the while loop.
+
+from MicroPythonListClass import MicroPythonList
+
+def main () -> int :
+  x = int (input ())
+  y = int (input ())
+  q = 0  
+  r = x
+  while r >= y :
+    q = q + 1
+    r = r - y;
+  print (q)
+  print (r)
+  return 0
+
+
+Abstract Syntax Tree for main
+-----------------------------
+
+(: (: (: (: (: (: (: (= (id x) (input)) (= (id y) (input))) (= (id q) (integer 0))) (= (id r) (id x))) (while (>= (id r) (id y)) (: (= (id q) (+ (id q) (integer 1))) (= (id r) (- (id r) (id y)))))) (print (id q))) (print (id r))) (return (integer 0)))
+
+brb0164@faculty% java MicroPythonAST < test2.py
+Source Program
+--------------
+
+# test2.py 
+
+# This program tests list manipulation operators.
+
+from MicroPythonListClass import MicroPythonList
+
+def main () -> int :
+  myList0 = MicroPythonList ()
+  myList1 = myList0 . cons (7)
+  myList2 = myList1 . cons (5)
+  myList3 = myList2 . cons (3)
+  result = (12 * 3 + 5) + myList3 . tail () . head ()
+  print (result)
+  return 0
+
+
+Abstract Syntax Tree for main
+-----------------------------
+
+(: (: (: (: (: (: (= (id myList0) (MicroPythonList)) (= (id myList1) (cons (id myList0) (integer 7)))) (= (id myList2) (cons (id myList1) (integer 5)))) (= (id myList3) (cons (id myList2) (integer 3)))) (= (id result) (+ (+ (* (integer 12) (integer 3)) (integer 5)) (head (tail (id myList3)))))) (print (id result))) (return (integer 0)))
+
+brb0164@faculty% java MicroPythonAST < test3.py
+Source Program
+--------------
+
+# test3.py
+
+# This program tests list comparison operations.
+
+from MicroPythonListClass import MicroPythonList
+
+def main () -> int :
+  my_list0 = MicroPythonList ()
+  my_list1 = my_list0 . cons (46)
+  my_list2 = my_list1 . cons (578)
+  my_list3 = my_list2 . cons (405)
+  my_list4 = my_list3 . cons (918)
+  my_list5 = my_list4 . cons (47)
+  my_list6 = my_list5 . cons (198)
+  my_list  = my_list6 . cons (14)
+  print (my_list)
+  target = 405
+  position = 0
+  while not my_list . null () and my_list . head () != target :
+    my_list = my_list . tail ()
+    position = position + 1;
+  if my_list . null () :
+    print (-1);
+  else :
+    print (position);
+  return 0
+
+
+
+Abstract Syntax Tree for main
+-----------------------------
+
+(: (: (: (: (: (: (: (: (: (: (: (: (: (= (id my_list0) (MicroPythonList)) (= (id my_list1) (cons (id my_list0) (integer 46)))) (= (id my_list2) (cons (id my_list1) (integer 578)))) (= (id my_list3) (cons (id my_list2) (integer 405)))) (= (id my_list4) (cons (id my_list3) (integer 918)))) (= (id my_list5) (cons (id my_list4) (integer 47)))) (= (id my_list6) (cons (id my_list5) (integer 198)))) (= (id my_list) (cons (id my_list6) (integer 14)))) (print (id my_list))) (= (id target) (integer 405))) (= (id position) (integer 0))) (while (and (not (null (id my_list))) (!= (head (id my_list)) (id target))) (: (= (id my_list) (tail (id my_list))) (= (id position) (+ (id position) (integer 1)))))) (if (null (id my_list)) (print (- (integer 1)))(print (id position)))) (return (integer 0)))
+
+brb0164@faculty% java MicroPythonAST < test4.py
+Source Program
+--------------
+
+# test4.py
+
+# This program tests non-recursive functions.
+
+from MicroPythonListClass import MicroPythonList
+
+def area (h : int, x : int, y : int) -> int :
+  z = 2 * (x * y + (x * h) + y * h)
+  return z
+
+def
+
+Abstract Syntax Tree for area
+-----------------------------
+
+(: (= (id z) (* (integer 2) (+ (+ (* (id x) (id y)) (* (id x) (id h))) (* (id y) (id h))))) (return (id z)))
+
+ main () -> int :
+  a = int (input ())
+  b = int (input ())
+  h = int (input ())
+  s = area (h, a, b)
+  print (s)
+  return 0
+
+
+Abstract Syntax Tree for main
+-----------------------------
+
+(: (: (: (: (: (= (id a) (input)) (= (id b) (input))) (= (id h) (input))) (= (id s) (apply area ((id h) (id a) (id b))))) (print (id s))) (return (integer 0)))
+
+brb0164@faculty% java MicroPythonAST < test5.py
+Source Program
+--------------
+
+# test5.py
+
+# This program tests recursive functions.
+
+from MicroPythonListClass import MicroPythonList
+
+def facto (x : int) -> int :
+  if x == 1 :
+    s = 1;
+  else :
+    s = x * facto (x - 1);
+  return s
+
+def
+
+Abstract Syntax Tree for facto
+------------------------------
+
+(: (if (== (id x) (integer 1)) (= (id s) (integer 1))(= (id s) (* (id x) (apply facto ((- (id x) (integer 1))))))) (return (id s)))
+
+ main () -> int :
+  print (facto (int (input ())))
+  return 0
+
+
+Abstract Syntax Tree for main
+-----------------------------
+
+(: (print (apply facto ((input)))) (return (integer 0)))
+
+brb0164@faculty% java MicroPythonAST < test6.py
+Source Program
+--------------
+
+# test6.py
+
+# This program tests recursive functions on lists.
+
+from MicroPythonListClass import MicroPythonList
+
+def cons_my_list (r : int, my_list : MicroPythonList) -> MicroPythonList :
+  if r <= 10 :
+    my_list = my_list . cons (r)
+    my_list = cons_my_list (r + 1, my_list);
+  return my_list
+
+def
+
+Abstract Syntax Tree for cons_my_list
+-------------------------------------
+
+(: (if (<= (id r) (integer 10)) (: (= (id my_list) (cons (id my_list) (id r))) (= (id my_list) (apply cons_my_list ((+ (id r) (integer 1)) (id my_list)))))) (return (id my_list)))
+
+ main () -> int :
+  print (cons_my_list (int (input ()), MicroPythonList ()))
+  return 0
+
+
+Abstract Syntax Tree for main
+-----------------------------
+
+(: (print (apply cons_my_list ((input) (MicroPythonList)))) (return (integer 0)))
+
+brb0164@faculty% exit
+
+Script done on 2022-10-20 01:14:34-05:00 [COMMAND_EXIT_CODE="0"]
